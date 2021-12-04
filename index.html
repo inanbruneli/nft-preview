@@ -41,11 +41,29 @@
       background-image: linear-gradient(hsl(214, 68%, 7%) 50%, var(--bluecard));
       border-radius: 15px;
       padding: 20px;
-      z-index: -1;
+      z-index: 0;
       top: -20px;
+      transition: all .2s ease-in-out;
+      cursor: pointer;
     }
 
+    .card:hover {
+      border: 1px solid white;
+      transform: scale(1.02);
+    }
+
+    .card:hover>.img {
+      border: 1px solid white;
+    }
+
+    .card:hover>.inf {
+      border-bottom: 1px solid white;
+    }
+
+
+
     .img {
+      transition: all .2s ease-in-out;
       border-radius: 15px;
       background-image: url(images/image-equilibrium.jpg);
       background-size: contain;
@@ -86,6 +104,7 @@
       padding-bottom: 10px;
       border-bottom: 2px solid var(--blueline);
       position: relative;
+      transition: all .2s ease-in-out;
     }
 
     .inf img {
@@ -125,7 +144,7 @@
     }
 
     .invisible {
-      z-index: 0;
+      z-index: 1;
       background-color: hsl(218, 73%, 4%);
       width: 100%;
       height: 10%;
@@ -158,19 +177,17 @@
       color: white;
       cursor: pointer;
       transition: all .5s;
+
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+
     }
 
     #btn:hover {
       border: 1px solid white;
-      transform: scale(1.05);
-
-    }
-
-    .btn {
-      position: relative;
+      width: 160px;
+      transform: translateX(-50%);
     }
   </style>
 
@@ -225,7 +242,16 @@
         price: '111.714 ETH',
         days: '5 days left',
         nameCreator: 'Inan Brunelli',
-        imageCreator: 'url(images/image-avatar.png)',
+        imageCreator: 'url(images/inan.jpg)',
+      },
+      {
+        name: 'Crypto Punk #998',
+        image: 'url(images/punk.png)',
+        description: 'Crypto Punk is nonsense and has no purpose',
+        price: '75.23 ETH',
+        days: '1 days left',
+        nameCreator: 'Will Smith',
+        imageCreator: 'url(images/user_punk.png)',
       },
     ]
     let nftNum = 0;
@@ -244,7 +270,7 @@
         $('.price').html(nft[cod].price);
         $('.days').html(nft[cod].days);
         $('.nameCreator').html(nft[cod].nameCreator);
-        $('.user-image').css('background-image', 'url(images/image-avatar.png)');
+        $('.user-image').css('background-image', nft[cod].imageCreator);
       }, 1500);
 
       setTimeout(() => {
